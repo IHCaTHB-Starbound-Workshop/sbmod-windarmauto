@@ -3,15 +3,5 @@
     "op":"replace",
     "path":"/ability/scripts/0",
     "value": "/items/active/weapons/melee/abilities/hammer/IHCautohammersmash.lua"
-  },
-  {
-    "op": "add",
-    "path": "/ability/flashTime",
-    "value": 0.5
-  },
-  {
-    "op": "add",
-    "path": "/ability/flashDirectives",
-    "value": "fade=FFFFFFFF=0.15"
   }
 ]
