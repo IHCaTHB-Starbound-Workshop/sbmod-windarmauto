@@ -6,8 +6,10 @@ Check out Argle Bargles [url=http://steamcommunity.com/sharedfiles/filedetails/?
 [url=community.playstarbound.com/threads/124193/]MEGATHREAD[/url]
 Find the server version on [url=https://github.com/IsaacHart/sbmod-windarmauto/releases/tag/0.2]git.[/url]",
   "friendlyName" : "Windup Armory Tweaks (Auto)",
+  "includes":["WINDARM.IHC"],
   "link" : "steam://url/CommunityFilePage/782921923",
   "name" : "WINDARMAUTO.IHC",
+  "requires":[],
   "steamContentId" : "782921923",
   "version" : "0.2"
 }
