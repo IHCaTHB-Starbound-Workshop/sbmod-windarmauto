@@ -43,8 +43,11 @@ function ShockWave:windup()
       runningSuppressed = true
     })
     if chargeTimer > self.minChargeTime then
-      self:setState(self.fire, 1)
-    end  
+      animator.setGlobalTag("bladeDirectives", "border=1;"..self.chargeBorder..";00000000")
+      if chargeTimer == self.chargeTime then
+        self:setState(self.fire)
+      end
+    end    
     coroutine.yield()
   end
 
@@ -62,6 +65,7 @@ function ShockWave:fire(charge)
 
   self:fireShockwave(charge)
   animator.playSound("fire")
+  animator.setGlobalTag("bladeDirectives", "border=0;"..self.chargeBorder..";00000000")
   util.wait(self.stances.fire.duration)
 end
 

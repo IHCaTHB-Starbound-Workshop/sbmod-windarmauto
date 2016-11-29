@@ -44,7 +44,10 @@ function Uppercut:windup()
     })
 
     if chargeTimer > self.minChargeTime then
-      self:setState(self.fire, 1)
+      animator.setGlobalTag("bladeDirectives", "border=1;"..self.chargeBorder..";00000000")
+      if chargeTimer == self.chargeTime then
+        self:setState(self.fire)
+      end
     end
     coroutine.yield()
   end
@@ -57,6 +60,7 @@ function Uppercut:fire(charge)
   self.weapon:setStance(self.stances.fire)
   self.weapon:updateAim()
 
+  animator.setGlobalTag("bladeDirectives", "border=0;"..self.chargeBorder..";00000000")
   animator.setAnimationState("uppercutSwoosh", "fire")
   animator.playSound("uppercut")
 

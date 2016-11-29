@@ -27,7 +27,10 @@ function Charge:charge()
     chargeTimer = math.min(self.chargeTime, chargeTimer + self.dt)
     chargeLevel = self:setChargeLevel(chargeTimer, chargeLevel)
     if chargeTimer > self.minChargeTime then
-      self:setState(self.fire, 1)
+      animator.setGlobalTag("bladeDirectives", "border=1;"..self.chargeBorder..";00000000")
+      if chargeTimer == self.chargeTime then
+        self:setState(self.fire)
+      end
     end
     coroutine.yield()
   end
@@ -47,6 +50,7 @@ function Charge:dash(charge)
   animator.setAnimationState("swoosh", "fire")
   animator.setAnimationState("dashSwoosh", "full")
   animator.playSound("fire")
+  animator.setGlobalTag("bladeDirectives", "border=0;"..self.chargeBorder..";00000000")
   util.wait(self.maxDashTime * charge, function(dt)
     local aimDirection = {mcontroller.facingDirection() * math.cos(self.weapon.aimAngle), math.sin(self.weapon.aimAngle)}
     mcontroller.controlApproachVelocity(vec2.mul(aimDirection, self.dashMaxSpeed), self.dashControlForce)

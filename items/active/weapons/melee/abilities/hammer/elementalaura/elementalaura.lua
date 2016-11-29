@@ -58,7 +58,10 @@ function ElementalAura:windup()
     self.weapon.relativeArmRotation = util.toRadians(util.lerp(chargeRatio, {self.stances.windup.armRotation, self.stances.windup.endArmRotation}))
     self.weapon.relativeWeaponRotation = util.toRadians(util.lerp(chargeRatio, {self.stances.windup.weaponRotation, self.stances.windup.endWeaponRotation}))
     if chargeTimer > self.minChargeTime then
-      self:setState(self.fire, 1)
+      animator.setGlobalTag("bladeDirectives", "border=1;"..self.chargeBorder..";00000000")
+      if chargeTimer == self.chargeTime then
+        self:setState(self.fire)
+      end
     end
     coroutine.yield()
   end
@@ -80,6 +83,7 @@ function ElementalAura:fire()
   self:activate()
 
   util.wait(self.stances.fire.duration)
+  animator.setGlobalTag("bladeDirectives", "border=0;"..self.chargeBorder..";00000000")
   self.cooldownTimer = self.cooldownTime
 end
 
