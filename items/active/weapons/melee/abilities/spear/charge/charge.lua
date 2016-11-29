@@ -29,7 +29,7 @@ function Charge:charge()
     if chargeTimer > self.minChargeTime then
       animator.setGlobalTag("bladeDirectives", "border=1;"..self.chargeBorder..";00000000")
       if chargeTimer == self.chargeTime then
-        self:setState(self.fire)
+        self:setState(self.fire,1)
       end
     end
     coroutine.yield()
